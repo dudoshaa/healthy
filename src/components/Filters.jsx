@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import FiltersItem from "./FiltersItem";
+import React from "react";
 
-function Filters({ title }) {
-  const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
+const Filters = ({
+  options,
+  title,
+  activeFilters,
+  setActiveFilters,
+  isOpen,
+  setIsOpen,
+}) => {
+  const handleClear = () => setActiveFilters([]);
   return (
     <div className="filters__container">
-      <button onClick={() => setOpen(!open)} className="filter__btn">
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="filter__btn"
+      >
         <span>{title}</span>{" "}
         <img
           width={20}
@@ -15,26 +23,36 @@ function Filters({ title }) {
           alt=""
         />
       </button>
-      {open && (
-        <ul className="filters__list">
-          <FiltersItem text="0 minutes" />
-          <FiltersItem text="5 minutes" />
-          <FiltersItem text="10 minutes" />
-          {title === "Max Cook Time" && (
-            <>
-              <FiltersItem text="15 minutes" />
-              <FiltersItem text="20 minutes" />
-            </>
-          )}
-          <li>
-            <button onClick={() => {}} className="clear__btn">
-              Clear
-            </button>
-          </li>
+
+      {isOpen && (
+        <ul className="filter__item-wrapper">
+          {options.map((o) => (
+            <div className="f__item" key={o.value}>
+              <input
+                className="filter__checkbox"
+                type="checkbox"
+                name={o.value}
+                value={o.value}
+                checked={activeFilters.includes(o.value)}
+                onChange={() =>
+                  setActiveFilters((prev) => {
+                    if (prev.includes(o.value)) {
+                      return prev.filter((v) => v !== o.value);
+                    }
+                    return [o.value];
+                  })
+                }
+              />
+              {o.label}
+            </div>
+          ))}
+          <button className="clear__btn" type="button" onClick={handleClear}>
+            Clear
+          </button>
         </ul>
       )}
     </div>
   );
-}
+};
 
 export default Filters;

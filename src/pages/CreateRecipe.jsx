@@ -10,9 +10,7 @@ function CreateRecipe() {
     getPost();
   }, []);
 
-  const handleDelete = (id) => {
-    deletePost(id);
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

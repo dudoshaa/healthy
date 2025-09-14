@@ -57,3 +57,55 @@
 .clear__btn:focus {
   border-color: var(--color-neutral-900);
 }
+.filter__wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+.filter__item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border: 1.5px solid #d6e3db;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 20;
+  min-width: 200px;
+  margin-top: 4px;
+}
+
+.select-button__item-wrapper > button {
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: var(--font-size-preset-8);
+  padding: 2px 8px;
+  border-radius: 0.8px;
+  font-family: var(--font-secondary);
+}
+
+.f__item {
+  width: 224px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background-color: transparent;
+  border-radius: 0.8rem;
+  border: 2px solid transparent;
+
+  &:focus {
+    outline: 2px solid var(--color-neutral-900);
+    outline-offset: 2px;
+  }
+}
+
+

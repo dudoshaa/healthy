@@ -843,6 +843,7 @@ input[type="checkbox"] {
   }
 }
 
+
 @media screen and (max-width: 380px) {
   .input__wrapper {
     width: 100%;

@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDatabase } from "../hooks/UseDatabase";
 
 function RecipeCard({ recipe }) {
+  const { deletePost } = useDatabase("/recipes");
+  const handleDelete = (id) => {
+    deletePost(id);
+  };
   return (
     <li className="recipes__item">
       <picture>
