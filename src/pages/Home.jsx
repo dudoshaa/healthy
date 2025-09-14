@@ -1,5 +1,6 @@
 import React from "react";
 import CookSmarter from "../components/CookSmarter";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
