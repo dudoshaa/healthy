@@ -7,7 +7,6 @@ function Recipes() {
   const { getPost, data } = useDatabase("/recipes");
   const [search, setSearch] = useState("");
 
-  // filter state'lar
   const [prepTimeFilters, setPrepTimeFilters] = useState([]);
   const [cookTimeFilters, setCookTimeFilters] = useState([]);
   const [isPrepFilterOpen, setIsPrepFilterOpen] = useState(false);
