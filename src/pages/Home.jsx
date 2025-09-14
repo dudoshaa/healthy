@@ -14,9 +14,9 @@ function Home() {
             tonight—no processed junk, no guesswork.
           </p>
           <div className="hero__container">
-            <a href="" className="btn start__btn ">
+            <Link to="/recipes" className="btn start__btn ">
               Start exploring
-            </a>
+            </Link>
             <img
               className="hero__image "
               src="./assets/images/image-home-hero-large.webp"
