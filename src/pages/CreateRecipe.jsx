@@ -29,27 +29,40 @@ function CreateRecipe() {
       .get("instructions")
       .split(",")
       .map((i) => i.trim());
-
-    postData({
-      title,
-      img: {
-        small: img,
-        large: img,
-      },
-      overview,
-      servings,
-      prepMinutes: Number(prepMinutes),
-      cookMinutes: Number(cookMinutes),
-      ingredients: ingredients.map((i) => i.trim()),
-      instructions: instructions.map((i) => i.trim()),
-    });
+    if (
+      title &&
+      img &&
+      overview &&
+      servings &&
+      prepMinutes &&
+      cookMinutes &&
+      ingredients &&
+      instructions
+    ) {
+      postData({
+        title,
+        image: {
+          small: img,
+          large: img,
+        },
+        overview,
+        servings,
+        prepMinutes: Number(prepMinutes),
+        cookMinutes: Number(cookMinutes),
+        ingredients: ingredients.map((i) => i.trim()),
+        instructions: instructions.map((i) => i.trim()),
+      });
+      alert("Recipe addded successfully");
+    } else {
+      alert("Please fil in all fields");
+    }
 
     e.target.reset();
   };
 
   return (
     <>
-      <form className="input__wrapper" onSubmit={handleSubmit}>
+      <form className="input__wrapper container" onSubmit={handleSubmit}>
         <input type="text" name="title" placeholder="title" />
         <input type="url" name="image" placeholder="image url" />
         <input type="text" name="overview" placeholder="overview" />
@@ -58,23 +71,10 @@ function CreateRecipe() {
         <input type="number" name="cookMinutes" placeholder="cookMinutes" />
         <input type="text" name="ingredients" placeholder="ingredients" />
         <input type="text" name="instructions" placeholder="instruction" />
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn">
+          Submit
+        </button>
       </form>
-
-      <ul>
-        {data &&
-          data.map((recipe) => {
-            return (
-              <>
-                <RecipeCard
-                  key={recipe.id}
-                  recipe={recipe}
-                  onDelete={() => handleDelete(recipe.id)}
-                />
-              </>
-            );
-          })}
-      </ul>
     </>
   );
 }
