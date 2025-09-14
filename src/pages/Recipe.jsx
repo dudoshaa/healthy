@@ -32,17 +32,17 @@ function Recipe() {
                 media="(max-width:768px ) "
                 width={704}
                 height={683}
-                srcSet={recipe.image.small}
+                srcSet={recipe.image?.small}
               />
               <source
                 media="(max-width: 1192px) "
                 width={618}
                 height={600}
-                srcSet={recipe.image.large}
+                srcSet={recipe.image?.large}
               />
               <img
                 className="built__image"
-                src={recipe.image.small}
+                src={recipe.image?.small}
                 alt=""
                 width={343}
                 height={333}

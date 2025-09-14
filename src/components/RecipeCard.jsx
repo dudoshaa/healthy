@@ -11,18 +11,18 @@ function RecipeCard({ recipe }) {
           media="(max-width: 375px)"
           width={327}
           height={300}
-          srcSet={recipe.image.small}
+          srcSet={recipe.image?.small}
         />
         <source
           className="recipes__item-image"
           media="(max-width: 768px) "
           width={680}
           height={600}
-          srcSet={recipe.image.small}
+          srcSet={recipe.image?.small}
         />
         <img
           className="recipes__item-image"
-          src={recipe.image.large}
+          src={recipe.image?.large}
           alt={recipe.title}
           width={360}
           height={300}

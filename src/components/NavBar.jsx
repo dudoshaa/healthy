@@ -24,6 +24,9 @@ function NavBar() {
           <NavLink className="pages__item" to="/recipes">
             Recipes
           </NavLink>
+          <NavLink className="pages__item" to="/create">
+            Create
+          </NavLink>
         </ul>
         <Link to="/recipes" className="btn navbar__btn">
           Browse recipes
@@ -47,6 +50,9 @@ function NavBar() {
                 </li>
                 <li className="page">
                   <NavLink to="/recipes">Recipes</NavLink>
+                </li>
+                <li className="page">
+                  <NavLink to="/create">Create</NavLink>
                 </li>
               </ul>
               <Link to="/recipes" className="btn navbar__btn__tab">
