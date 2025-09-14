@@ -1,15 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Filters from "../components/Filters";
 import { useDatabase } from "../hooks/UseDatabase";
-import { Link } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
 
 function Recipes() {
-  const { postData, getPost, deletePost, data } = useDatabase("/recipes");
+  const { getPost, data } = useDatabase("/recipes");
+  const [filters, setFilters] = useState({ maxPrep: null, maxCook: null });
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getPost();
-  }, [getPost]);
+  }, [getPost, data]);
+
+  const filteredData = data
+    ? data.filter((recipe) => {
+        let ok = true;
+
+        if (search.trim() !== "") {
+          const lower = search.toLowerCase();
+          ok = ok && recipe.title?.toLowerCase().includes(lower);
+        }
+
+        return ok;
+      })
+    : [];
+
+  const handleFilterChange = (title, value) => {
+    if (title === "Max Prep Time") {
+      setFilters((prev) => (console.log(prev), { ...prev, maxPrep: value }));
+    }
+    if (title === "Max Cook Time") {
+      setFilters((prev) => ({ ...prev, maxCook: value }));
+    }
+  };
 
   return (
     <>
@@ -17,18 +40,22 @@ function Recipes() {
         <div className="container simple__container">
           <h1 className="simple__title">Explore our simple, healthy recipes</h1>
           <p className="simple__desc">
-            Discover eight quick, whole-food dishes that fit real-life schedules
-            and taste amazing. Use the search bar to find a recipe by name or
-            ingredient, or simply scroll the list and let something delicious
-            catch your eye.
+            Discover quick, whole-food dishes that fit real-life schedules.
           </p>
         </div>
       </section>
+
       <section>
         <div className="container recipes__filter">
           <div className="filters__wrapper">
-            <Filters title="Max Prep Time" />
-            <Filters title="Max Cook Time" />
+            <Filters
+              title="Max Prep Time"
+              onFilterChange={handleFilterChange}
+            />
+            <Filters
+              title="Max Cook Time"
+              onFilterChange={handleFilterChange}
+            />
           </div>
 
           <div className="search__wrapper">
@@ -36,11 +63,13 @@ function Recipes() {
               className="search"
               type="search"
               placeholder="Search by name or ingredient…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
             <img
               className="search__icon"
               src="./assets/images/icon-search.svg"
-              alt=""
+              alt="search"
             />
           </div>
         </div>
@@ -48,10 +77,10 @@ function Recipes() {
 
       <ul className="recipes__list container">
         {!data && <li>Loading...</li>}
-        {data &&
-          data.map((recipe) => {
-            return <RecipeCard recipe={recipe} key={recipe.id} />;
-          })}
+        {filteredData.length === 0 && data && <li>No recipes found</li>}
+        {filteredData.map((recipe) => (
+          <RecipeCard recipe={recipe} key={recipe.id} />
+        ))}
       </ul>
     </>
   );

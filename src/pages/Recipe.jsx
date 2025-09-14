@@ -5,13 +5,13 @@ import RecipeCard from "../components/RecipeCard";
 
 function Recipe() {
   const { id } = useParams();
-  const { data: recipe, getPost } = useDatabase("/recipes");
+  const { data: recipe, getPost } = useDatabase("/recipes/" + id);
   const { data: moreRecipes, getPost: getRecipes } = useDatabase("/recipes");
 
   useEffect(() => {
-    getPost(id);
+    getPost();
     getRecipes();
-  }, [id]);
+  }, [id, moreRecipes,data]);
 
   return (
     <div>

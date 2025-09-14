@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CookSmarter() {
   return (
@@ -8,9 +9,9 @@ function CookSmarter() {
         <p className="smarter__desc">
           Hit the button, pick a recipe, and get dinner on the table—fast.
         </p>
-        <a className="btn smarter__btn" href="#">
+        <Link className="btn smarter__btn" to="/recipes">
           Browse recipes
-        </a>
+        </Link>
       </div>
     </section>
   );
