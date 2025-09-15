@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useDatabase } from "../hooks/UseDatabase";
-import RecipeCard from "../components/RecipeCard";
-import { Link } from "react-router-dom";
 
 function CreateRecipe() {
   const { postData, getPost, deletePost, data } = useDatabase("/recipes");

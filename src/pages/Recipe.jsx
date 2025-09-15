@@ -11,7 +11,7 @@ function Recipe() {
   useEffect(() => {
     getPost();
     getRecipes();
-  }, [id, moreRecipes,data]);
+  }, [id]);
 
   return (
     <div>

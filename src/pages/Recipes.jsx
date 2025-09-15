@@ -14,7 +14,7 @@ function Recipes() {
 
   useEffect(() => {
     getPost();
-  }, [getPost]);
+  }, []);
 
   const filteredData = data
     ? data.filter((recipe) => {
@@ -51,7 +51,10 @@ function Recipes() {
         <div className="container simple__container">
           <h1 className="simple__title">Explore our simple, healthy recipes</h1>
           <p className="simple__desc">
-            Discover quick, whole-food dishes that fit real-life schedules.
+            Discover eight quick, whole-food dishes that fit real-life schedules
+            and taste amazing. Use the search bar to find a recipe by name or
+            ingredient, or simply scroll the list and let something delicious
+            catch your eye.
           </p>
         </div>
       </section>
