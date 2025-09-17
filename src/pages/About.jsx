@@ -40,6 +40,11 @@ function About() {
               alt="About our mission"
             />
           </picture>
+          <img
+            className="build__bg"
+            src="../assets/images/pattern-squiggle-2.svg"
+            alt=""
+          />
         </div>
       </section>
       <section className="container">

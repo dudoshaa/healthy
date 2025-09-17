@@ -339,6 +339,13 @@ input[type="checkbox"] {
   max-width: 100%;
   object-fit: cover;
   display: block;
+  position: relative;
+}
+.build__bg {
+  display: block;
+  position: absolute;
+  right: 2%;
+  bottom: 12%;
 }
 .build__image {
   border-radius: 1.6rem;
@@ -729,6 +736,17 @@ input[type="checkbox"] {
     box-shadow: -6px 8px 8px 0px rgba(80, 65, 34, 0.3);
   }
 }
+.min {
+  font-weight: 700;
+  font-size: var(--font-size-preset-6);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+}
+.highlights {
+  width: 27rem;
+  background: linear-gradient(to top, #fe9f6b 60%, transparent 50%);
+  display: inline;
+}
 @media screen and (max-width: 1292px) {
   .container,
   .hd__container {
@@ -797,6 +815,9 @@ input[type="checkbox"] {
   .recipe__image {
     width: 100%;
   }
+  .build__bg {
+    display: none;
+  }
   .exist__container,
   .recipe__info,
   .more__recipes {
@@ -845,6 +866,9 @@ input[type="checkbox"] {
   }
   .input__wrapper {
     width: 100%;
+  }
+  .build__bg {
+    display: none;
   }
 }
 

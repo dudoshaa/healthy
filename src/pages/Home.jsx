@@ -82,9 +82,9 @@ function Home() {
           <div className="built__info">
             <h3 className="built__title">Built for real life</h3>
             <p className="built__desc__more">
-              Cooking shouldn’t be complicated. These recipes come in under 30
-              minutes of active time, fit busy schedules, and taste good enough
-              to repeat.{" "}
+              Cooking shouldn’t be complicated. These recipes come in under
+              <strong className="min highlights">30 minutes</strong> of active
+              time, fit busy schedules, and taste good enough to repeat.{" "}
             </p>
             <p className="built__desc">
               Whether you’re new to the kitchen or just need fresh ideas, we’ve
