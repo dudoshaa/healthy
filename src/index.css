@@ -717,11 +717,16 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 500px;
   input {
+    outline: 0;
+    border: 0;
     padding: 2rem 1rem;
     border-radius: 1.6rem;
+    -webkit-box-shadow: -6px 8px 8px 0px rgba(80, 65, 34, 0.3);
+    -moz-box-shadow: -6px 8px 8px 0px rgba(80, 65, 34, 0.3);
+    box-shadow: -6px 8px 8px 0px rgba(80, 65, 34, 0.3);
   }
 }
 @media screen and (max-width: 1292px) {
@@ -842,7 +847,6 @@ input[type="checkbox"] {
     width: 100%;
   }
 }
-
 
 @media screen and (max-width: 380px) {
   .input__wrapper {

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDatabase } from "../hooks/UseDatabase";
+import toast from "react-hot-toast";
 
 function CreateRecipe() {
   const { postData, getPost, deletePost, data } = useDatabase("/recipes");
@@ -7,8 +8,6 @@ function CreateRecipe() {
   useEffect(() => {
     getPost();
   }, []);
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,9 +47,9 @@ function CreateRecipe() {
         ingredients: ingredients.map((i) => i.trim()),
         instructions: instructions.map((i) => i.trim()),
       });
-      alert("Recipe addded successfully");
+      toast.success("Recipe addded successfully");
     } else {
-      alert("Please fil in all fields");
+      toast.error("Please fil in all fields");
     }
 
     e.target.reset();
@@ -59,16 +58,16 @@ function CreateRecipe() {
   return (
     <>
       <form className="input__wrapper container" onSubmit={handleSubmit}>
-        <input type="text" name="title" placeholder="title" />
-        <input type="url" name="image" placeholder="image url" />
-        <input type="text" name="overview" placeholder="overview" />
-        <input type="number" name="servings" placeholder="servings" />
-        <input type="number" name="prepMinutes" placeholder="prepMinutes" />
-        <input type="number" name="cookMinutes" placeholder="cookMinutes" />
-        <input type="text" name="ingredients" placeholder="ingredients" />
-        <input type="text" name="instructions" placeholder="instruction" />
+        <input type="text" name="title" placeholder="TITLE" />
+        <input type="url" name="image" placeholder="IMAGE URL" />
+        <input type="text" name="overview" placeholder="OVERWIEW" />
+        <input type="number" name="servings" placeholder="SERVINGS" />
+        <input type="number" name="prepMinutes" placeholder="PREPMINUTES" />
+        <input type="number" name="cookMinutes" placeholder="COOKMINUTES" />
+        <input type="text" name="ingredients" placeholder="INGREDIENTS" />
+        <input type="text" name="instructions" placeholder="INSCTRUCTION" />
         <button type="submit" className="btn">
-          Submit
+          +CREATE
         </button>
       </form>
     </>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { axiosInstance } from "../utils";
+import toast from "react-hot-toast";
 
 export function useDatabase(url) {
   const [data, setData] = useState(null);
@@ -13,6 +14,7 @@ export function useDatabase(url) {
       setData(req.data);
     } catch (err) {
       setError(err.message);
+      toast.err(err);
     } finally {
       setIsPending(false);
     }
@@ -22,7 +24,9 @@ export function useDatabase(url) {
     setIsPending(true);
     try {
       const req = await axiosInstance.post(url, payload);
-      setData((prev) => (Array.isArray(prev) ? [...prev, req.data] : [req.data]));
+      setData((prev) =>
+        Array.isArray(prev) ? [...prev, req.data] : [req.data]
+      );
     } catch (err) {
       setError(err.message);
     } finally {
